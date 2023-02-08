@@ -17,7 +17,7 @@ import org.eclipse.cdt.internal.core.dom.rewrite.astwriter.ASTWriter;
 
 public class SampleParser {
     public static void main(String[] args) {
-        IASTTranslationUnit translationUnit = generateTranslationUnit("example/Hello.c");
+        IASTTranslationUnit translationUnit = generateTranslationUnit("example/A.c");
         System.out.println(new ASTWriter().write(translationUnit));
     }
 
@@ -39,6 +39,8 @@ public class SampleParser {
         try {
             translationUnit = GCCLanguage.getDefault().getASTTranslationUnit(fileContent, info,
                     emptyIncludes, null, opts, log);
+
+            translationUnit.accept(new AssignmentToItselfChecker());
 
         } catch (Exception e) {
             e.printStackTrace();
