@@ -26,11 +26,11 @@ public class SampleParser {
 
         Map<String, String> definedSymbols = new HashMap<>();
 
-        String[] includePaths = new String[0];
+        String[] includePaths = new String[] {};
         IScannerInfo info = new ScannerInfo(definedSymbols, includePaths);
 
         IncludeFileContentProvider emptyIncludes = IncludeFileContentProvider.getEmptyFilesProvider();
-        int opts = ILanguage.OPTION_IS_SOURCE_UNIT;
+        int opts = ILanguage.OPTION_PARSE_INACTIVE_CODE;
 
         IParserLogService log = new DefaultLogService();
 
